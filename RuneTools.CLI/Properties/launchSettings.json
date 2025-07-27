@@ -1,0 +1,11 @@
+{
+  "profiles": {
+    "RuneTools.CLI": {
+      "commandName": "Project"
+    },
+    "RuneTools.CLI Test Debug": {
+      "commandName": "Project",
+      "commandLineArgs": "scenes/test.rscene\r\nscenes\r\ndebug"
+    }
+  }
+}

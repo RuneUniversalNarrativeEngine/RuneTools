@@ -2,7 +2,7 @@
 {
     public enum SourceFileType
     {
-        RunicMap,
+        RunicScene,
         RunicScript,
     }
 }

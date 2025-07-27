@@ -11,8 +11,8 @@ namespace RuneTools.CLI
             SourceFileType sourceFileType;
             switch (fileInfo.Extension.ToLower())
             {
-                case ".rmap":
-                    sourceFileType = SourceFileType.RunicMap;
+                case ".rscene":
+                    sourceFileType = SourceFileType.RunicScene;
                     break;
                 case ".runic":
                     sourceFileType = SourceFileType.RunicScript;
@@ -23,8 +23,18 @@ namespace RuneTools.CLI
             }
 
             var sourceCode = File.ReadAllText(fileInfo.FullName);
-            RunicCompiler compiler = new(sourceCode, args[1], sourceFileType);
+            bool debugMode = false;
+            if (args.Length == 3 && args[2].ToLower() == "debug")
+            {
+                Console.WriteLine("Debug mode enabled.");
+                debugMode = true;
+            }
+
+            RunicCompiler compiler = new(sourceCode, args[1], sourceFileType, debugMode);
             compiler.Compile();
+            Console.WriteLine($"Compilation of {fileInfo.Name} completed successfully.");
+            Console.WriteLine("Press any key to exit...");
+            Console.ReadLine();
         }
     }
 }
