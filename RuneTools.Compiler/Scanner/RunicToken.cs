@@ -2,10 +2,10 @@
 {
     internal class RunicToken
     {
-        RunicTokenType Type { get; set; }
-        string Value { get; set; }
-        int Line { get; set; }
-        int Column { get; set; }
+        public RunicTokenType Type { get; set; }
+        public string Value { get; set; }
+        public int Line { get; set; }
+        public int Column { get; set; }
 
         public RunicToken(RunicTokenType type, string value, int line, int column)
         {

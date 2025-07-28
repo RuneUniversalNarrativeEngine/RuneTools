@@ -23,7 +23,7 @@ namespace RuneTools.Compiler
         public void Compile()
         {
             var tokens = Scan();
-            //var expressions = Parse(tokens);
+            var expressions = Parse(tokens);
             //GenerateCode(expressions);
             if (_isDebugMode)
             {
@@ -38,15 +38,18 @@ namespace RuneTools.Compiler
             return tokens;
         }
 
-        private List<RunicExpression> Parse(List<RunicToken> tokens)
+        private List<IRunicExpression> Parse(List<RunicToken> tokens)
         {
-            var expressions = RunicParser.Parse(tokens);
+            RunicParser parser = new RunicParser(tokens);
+            var expressions = parser.Parse();
             return expressions;
         }
 
-        private void GenerateCode(List<RunicExpression> expressions)
+        private void GenerateCode(List<IRunicExpression> expressions)
         {
-            RunicGenerator.Generate(expressions);
+
+            RunicGenerator runicGenerator = new RunicGenerator(expressions);
+            runicGenerator.Generate();
         }
 
         private void DebugLog(List<RunicToken> tokens)
@@ -62,6 +65,8 @@ namespace RuneTools.Compiler
             }
 
             File.AppendAllText($"{_outputDirectory}/debug.log", debugInfo);
+            Console.WriteLine("Debug information logged to debug.log");
+            Console.WriteLine(debugInfo);
         }
     }
 }

@@ -2,9 +2,16 @@
 
 namespace RuneTools.Compiler.Generator
 {
-    internal static class RunicGenerator
+    internal class RunicGenerator
     {
-        public static string Generate(List<RunicExpression> expressions)
+        private readonly List<IRunicExpression> _expressions;
+
+        public RunicGenerator(List<IRunicExpression> expressions)
+        {
+            _expressions = expressions;
+        }
+
+        public string Generate()
         {
             throw new NotImplementedException("RunicGenerator.Generate method is not implemented yet.");
         }

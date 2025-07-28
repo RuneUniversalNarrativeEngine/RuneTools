@@ -1,6 +1,6 @@
 ﻿namespace RuneTools.Compiler.Parser
 {
-    internal class RunicExpression
+    internal interface IRunicExpression
     {
     }
 }
